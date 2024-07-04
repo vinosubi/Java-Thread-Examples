@@ -20,7 +20,7 @@ A thread in Java goes through various states in its lifecycle:
 **Controlling Threads**
 Java provides several methods to manage thread execution:
 
-**start(): **Begins the thread's execution.
+**start():** Begins the thread's execution.
 **run():** Contains the code that constitutes the new thread.
 **sleep(long millis):** Pauses the thread for the specified duration.
 **join():** Waits for the thread to complete.
