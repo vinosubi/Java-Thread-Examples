@@ -27,7 +27,7 @@ Java provides several methods to manage thread execution:
 **sleep(long millis):** Pauses the thread for the specified duration.\
 **join():** Waits for the thread to complete.\
 **yield():** Hints to the thread scheduler that the current thread is willing to yield its current use of a processor.\
-**interrupt(): ** Interrupts the thread, causing it to stop or perform an alternative action if it's in a waiting or sleeping state.\
+**interrupt():** Interrupts the thread, causing it to stop or perform an alternative action if it's in a waiting or sleeping state.\
 
 1.Extending the `Thread` class:
 
