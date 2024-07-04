@@ -5,8 +5,9 @@ A thread is the smallest unit of execution within a process. In Java, multithrea
 There are two primary ways to create threads in Java:
 
 By extending the Thread class.
-'
+'''
 By implementing the Runnable interface.
+
 
 **Thread Lifecycle**
 A thread in Java goes through various states in its lifecycle:
