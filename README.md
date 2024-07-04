@@ -22,19 +22,20 @@ public class Main {
 
 2.Implementing the `Runnable` interface:
 ```java
-class MyRunnable implements Runnable {
-    public void run() {
-        // Code that will run in the new thread
-        System.out.println("Thread is running");
+class MyThread2 implements Runnable
+{
+    public  void run()
+    {
+        System.out.println("Runnable Thread is running");
     }
 }
+public class Example2 {
 
-public class Main {
     public static void main(String[] args) {
-        Thread t1 = new Thread(new MyRunnable());
-        t1.start(); // Start the new thread
+        MyThread2 myThread2 = new MyThread2();
+        Thread t1 = new Thread(myThread2);
+        t1.start();
     }
 }
-
 ```
 
