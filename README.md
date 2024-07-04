@@ -12,22 +12,22 @@ By implementing the Runnable interface.
 **Thread Lifecycle**
 A thread in Java goes through various states in its lifecycle:
 
-**New:** A thread is in this state after being created but before the start method is invoked.
-**Runnable:** The thread is ready to run and waiting for CPU time.
-**Blocked:** The thread is waiting for a monitor lock to enter a synchronized block/method.
-**Waiting:** The thread is waiting indefinitely for another thread to perform a particular action.
-**Timed Waiting:** The thread is waiting for a specified amount of time.
-**Terminated:** The thread has finished executing.
+**New:** A thread is in this state after being created but before the start method is invoked.\
+**Runnable:** The thread is ready to run and waiting for CPU time.\
+**Blocked:** The thread is waiting for a monitor lock to enter a synchronized block/method.\
+**Waiting:** The thread is waiting indefinitely for another thread to perform a particular action.\
+**Timed Waiting:** The thread is waiting for a specified amount of time.\
+**Terminated:** The thread has finished executing.\
 
 **Controlling Threads**
 Java provides several methods to manage thread execution:
 
-**start():** Begins the thread's execution.
-**run():** Contains the code that constitutes the new thread.
-**sleep(long millis):** Pauses the thread for the specified duration.
-**join():** Waits for the thread to complete.
-**yield():** Hints to the thread scheduler that the current thread is willing to yield its current use of a processor.
-**interrupt(): ** Interrupts the thread, causing it to stop or perform an alternative action if it's in a waiting or sleeping state.
+**start():** Begins the thread's execution.\
+**run():** Contains the code that constitutes the new thread.\
+**sleep(long millis):** Pauses the thread for the specified duration.\
+**join():** Waits for the thread to complete.\
+**yield():** Hints to the thread scheduler that the current thread is willing to yield its current use of a processor.\
+**interrupt(): ** Interrupts the thread, causing it to stop or perform an alternative action if it's in a waiting or sleeping state.\
 
 1.Extending the `Thread` class:
 
