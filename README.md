@@ -113,7 +113,7 @@ public class SynchronizationExample1 {
 }
 ```
 
-2.Example
+`2.Example`
 ```java
 class Counter2 {
     private int count = 0;
