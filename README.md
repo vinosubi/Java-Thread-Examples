@@ -70,7 +70,7 @@ public class Example2 {
 **Thread Synchronization**
 When multiple threads access shared resources, synchronization is essential to prevent data inconsistencies. The synchronized keyword ensures that only one thread can execute a synchronized block or method at a time.
 
-`**1.Example 1**`
+`<b>**1.Example 1**</b>`
 ```java
 class Counter {
     private int count = 0;
