@@ -77,6 +77,65 @@ When multiple threads access shared resources, synchronization is essential to p
 2. The thread releases the acquired lock.
 3. Same steps start from step 1 for other threads.
 
+   ![image](https://github.com/vinosubi/Java-Thread-Examples/assets/133937082/28b76846-1774-4f83-835b-7310e7495527)
+
+**Why use synchronization?**
+If multiple threads try to simultaneously access and modify the shared data, it can lead to data corruption. Inconsistent or incorrect values can be read or written, causing unexpected behaviour and incorrect program output.
+
+As discussed in the above example, if multiple people try to access the printer simultaneously without synchronization, they might end up sending their print jobs at the same time. This can lead to conflicts where print jobs get mixed up, pages are printed out of order, or multiple print jobs are overlapped on the same paper.
+
+**How to use synchronization?**
+At a high level, there are two ways by which you can achieve synchronization using the synchronized keyword:
+
+`Synchronized Methods:` When a thread invokes a synchronized method, it acquires the lock associated with the object instance on which the method is called. Other threads trying to access synchronized methods on the same object instance will be blocked until the lock is released.
+
+```java
+public synchronized void synchronizedMethod() {
+    // Code that requires synchronization
+}
+```
+
+`Synchronized Blocks:` You can use synchronized blocks to enclose a specific section of code that needs to be synchronized. A synchronized block is defined using the synchronized keyword followed by the object instance or class used for synchronization. Only one thread can execute the code within a synchronized block at a time.
+```java
+public void someMethod() {
+    // Code executed without synchronization
+
+    synchronized (sharedObject) {
+        // Code that requires synchronization
+    }
+
+    // Code executed without synchronization
+}
+```
+
+'Now, Consider the following example for understanding the internal working of the synchronized keyword:'
+
+```java
+public class Counter {
+    private int count = 0;
+
+    public synchronized void increment() {
+        count++;
+    }
+
+    public synchronized void decrement() {
+        count--;
+    }
+
+    public synchronized int getCount() {
+        return count;
+    }
+}
+```
+
+In this example, we have a class named Counter that maintains an internal count variable. The increment, decrement, and getCount methods are all marked as synchronized(only considered for explaining the example).
+
+Multiple threads can operate concurrently on a single instance of the Counter class.
+When a thread calls the increment method on a Counter instance, it attempts to acquire the lock associated with that instance's monitor.
+If the lock is available, the thread acquires the lock, enters the monitor, and executes the critical section of the increment method, which increments the count variable by 1.
+While a thread is inside the synchronized increment method, other threads that try to call either the increment, decrement, or getCount methods on the same Counter instance are blocked, as they need to acquire the lock associated with the monitor.
+Once the thread finishes executing the critical section (i.e., incrementing the count), it releases the lock, allowing other waiting threads to acquire the lock and execute their synchronized methods.
+Similarly, when threads call the synchronized decrement or getCount methods, they follow the same steps of acquiring and releasing the lock associated with the monitor, ensuring that only one thread executes the critical section at a time.
 `Example 1`
 ```java
 class Counter {
