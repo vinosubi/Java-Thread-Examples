@@ -1,4 +1,4 @@
-**What is a Thread?**
+**What is a Thread?** 
 A thread is the smallest unit of execution within a process. In Java, multithreading is a powerful feature that allows multiple threads to run concurrently, providing a means to perform background tasks, handle multiple client requests, or improve performance through parallel processing.
 
 **Creating Threads in Java**
