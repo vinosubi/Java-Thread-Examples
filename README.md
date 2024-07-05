@@ -349,6 +349,7 @@ We have already learned how to synchronize a shared resource using a **synchroni
 2. The term "Reentrant" in its name refers to its ability to allow a thread to re-acquire the lock it is holding, making it suitable for nested locking scenarios.
 
 `Key Features:`
+
 **1. Reentrancy:** A thread that already holds the lock can acquire it again without blocking.
 **2. Interruptible Locking:** The lock acquisition can be interruptible using the lockInterruptibly() method.
 **3. Fairness:** It supports both fair and unfair lock acquisition policies.
@@ -356,16 +357,19 @@ We have already learned how to synchronize a shared resource using a **synchroni
 
 **Here’s a basic overview of how to use ReentrantLock:**
 `1. Import the ReentrantLock class:`
+
 ```java
 import java.util.concurrent.locks.ReentrantLock;
 ```
 
 `2. Create an instance of ReentrantLock:`
+
 ```java
 ReentrantLock lock = new ReentrantLock();
 ```
 
 `3. Use the lock and unlock methods to control access to the critical section:`
+
 ```java
 try {
     lock.lock(); // Acquire the lock
@@ -381,6 +385,7 @@ try {
 The lock method is used to acquire the lock, and the unlock method is used to release it. It's important to release the lock in a finally block to ensure that it's released even if an exception occurs within the critical section.
 
 `4. tryLock():`
+
 You can also use the tryLock method, which attempts to acquire the lock without blocking. This method returns a boolean indicating whether the lock was acquired:
 ```java
 if (lock.tryLock()) {
@@ -397,10 +402,13 @@ if (lock.tryLock()) {
 ```
 
 `5. tryLock(long timeout, TimeUnit unit)`
+
 The tryLock(long timeout, TimeUnit unit) method in the ReentrantLock class provides a way to attempt to acquire the lock within a specified time duration. It is a variation of the tryLock() method that introduces a timeout parameter, allowing the thread to wait for a certain period for the lock to become available. If the lock is not acquired within the specified time, the method returns false.
 
 `6. Reentrant behavior:`
+
 As mentioned earlier, ReentrantLock is reentrant, meaning a thread can acquire the lock multiple times. To release the lock, the thread must call unlock the same number of times it called lock.
+
 ```java
 lock.lock();   // First acquisition
 try {
