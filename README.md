@@ -67,6 +67,8 @@ public class Example2 {
 }
 ```
 **Lambda Thread**
+
+`Example 3 : Basic Lambda Thread`
 ```java
 public class LambdaThreadExample {
     public static void main(String[] args) {
@@ -81,7 +83,93 @@ public class LambdaThreadExample {
 }
 ```
 
-`Basic Lambda Thread`
+
+`Example 4 : Lambda Thread with Runnable Interface`
+```java
+public class LambdaRunnableExample {
+    public static void main(String[] args) {
+        // Implementing Runnable using a lambda expression
+        Runnable runnable = () -> {
+            System.out.println("Runnable is running");
+        };
+        
+        // Creating a thread with the Runnable instance
+        Thread thread = new Thread(runnable);
+        
+        // Start the thread
+        thread.start();
+    }
+}
+```
+
+`Example 5 : Lambda Thread with a Parameterized Runnable`
+```java
+public class LambdaParameterizedRunnableExample {
+    public static void main(String[] args) {
+        // Parameter to be passed to the thread
+        String message = "Parameterized Runnable is running";
+        
+        // Implementing Runnable using a lambda expression with a parameter
+        Runnable runnable = () -> {
+            System.out.println(message);
+        };
+        
+        // Creating a thread with the Runnable instance
+        Thread thread = new Thread(runnable);
+        
+        // Start the thread
+        thread.start();
+    }
+}
+
+```
+
+`Example 6 : Lambda Thread Performing a Task`
+```java
+public class LambdaTaskExample {
+    public static void main(String[] args) {
+        // Task to be performed by the thread
+        Runnable task = () -> {
+            for (int i = 1; i <= 5; i++) {
+                System.out.println("Task: " + i);
+            }
+        };
+        
+        // Creating a thread with the Runnable task
+        Thread thread = new Thread(task);
+        
+        // Start the thread
+        thread.start();
+    }
+}
+
+```
+
+`Example 7 : Lambda Thread with Exception Handling`
+```java
+public class LambdaExceptionHandlingExample {
+    public static void main(String[] args) {
+        // Task to be performed by the thread with exception handling
+        Runnable task = () -> {
+            try {
+                System.out.println("Thread is running");
+                // Simulating an exception
+                throw new Exception("Exception in thread");
+            } catch (Exception e) {
+                System.out.println("Caught exception: " + e.getMessage());
+            }
+        };
+        
+        // Creating a thread with the Runnable task
+        Thread thread = new Thread(task);
+        
+        // Start the thread
+        thread.start();
+    }
+}
+```
+
+
 
 #
 **Thread Synchronization**\
