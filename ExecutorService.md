@@ -18,14 +18,14 @@ Starting from Java 5, JDK provides API ExecutorService that simplifies running t
 ExecutorService is an interface provided by JDK. Its object can be obtained using class Executors. There are 5 types of thread pools we can create
 
 ```java
-ExecutorService execService = Executors.newSingleThreadExecutor(10);
+1. ExecutorService execService = Executors.newSingleThreadExecutor(10);
  ```
  Creates an Executor that uses a single thread
  
  **SingleThreadedExecutor :** It is similar to a fixed thread executor, but the size of the blocking queue is 1. In this case if the thread is killed because of an exception, a new thread is created. It is used when we want to make sure of the order of execution (sequentially).
 
 ```java
-ExecutorService execService = Executors.newFixedThreadPool(10);
+2. ExecutorService execService = Executors.newFixedThreadPool(10);
 ```
  Creates a thread pool that reuses a fixed number of threads
  
@@ -33,7 +33,7 @@ ExecutorService execService = Executors.newFixedThreadPool(10);
 
 
 ```java
-ExecutorService execService = Executors.newScheduledThreadPool(10);
+3. ExecutorService execService = Executors.newScheduledThreadPool(10);
 ```
  Creates a thread pool that can schedule commands to run after a given delay, or to execute periodically.
  
@@ -41,7 +41,7 @@ ExecutorService execService = Executors.newScheduledThreadPool(10);
 
 
 ```java
-ExecutorService execService = Executors.newCachedThreadPool();
+4. ExecutorService execService = Executors.newCachedThreadPool();
 ```
  Creates a thread pool that creates new threads as needed, but will reuse previously constructed threads when they are available.
  
@@ -49,7 +49,7 @@ ExecutorService execService = Executors.newCachedThreadPool();
 
 
 ```java
-ExecutorService execService = Executors.newWorkStealingPool();
+5. ExecutorService execService = Executors.newWorkStealingPool();
 ```
 Creates a work-stealing thread pool using all available processors as its target parallelism level
 
