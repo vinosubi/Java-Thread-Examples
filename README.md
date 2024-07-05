@@ -66,6 +66,23 @@ public class Example2 {
     }
 }
 ```
+**Lambda Thread**
+```java
+public class LambdaThreadExample {
+    public static void main(String[] args) {
+        // Creating a thread using a lambda expression
+        Thread thread = new Thread(() -> {
+            System.out.println("Thread is running");
+        });
+        
+        // Start the thread
+        thread.start();
+    }
+}
+```
+
+`Basic Lambda Thread`
+
 #
 **Thread Synchronization**\
 When multiple threads access shared resources, synchronization is essential to prevent data inconsistencies. The synchronized keyword ensures that only one thread can execute a synchronized block or method at a time.
