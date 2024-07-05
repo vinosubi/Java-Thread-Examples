@@ -17,7 +17,7 @@ A thread in Java goes through various states in its lifecycle:
 **Blocked:** The thread is waiting for a monitor lock to enter a synchronized block/method.\
 **Waiting:** The thread is waiting indefinitely for another thread to perform a particular action.\
 **Timed Waiting:** The thread is waiting for a specified amount of time.\
-**Terminated:** The thread has finished executing.\
+**Terminated:** The thread has finished executing.
 
 **Controlling Threads**
 Java provides several methods to manage thread execution:
@@ -27,7 +27,7 @@ Java provides several methods to manage thread execution:
 **sleep(long millis):** Pauses the thread for the specified duration.\
 **join():** Waits for the thread to complete.\
 **yield():** Hints to the thread scheduler that the current thread is willing to yield its current use of a processor.\
-**interrupt():** Interrupts the thread, causing it to stop or perform an alternative action if it's in a waiting or sleeping state.\
+**interrupt():** Interrupts the thread, causing it to stop or perform an alternative action if it's in a waiting or sleeping state.
 
 1.Extending the `Thread` class:
 
@@ -69,6 +69,13 @@ public class Example2 {
 
 **Thread Synchronization**
 When multiple threads access shared resources, synchronization is essential to prevent data inconsistencies. The synchronized keyword ensures that only one thread can execute a synchronized block or method at a time.
+
+**Synchronization** in Java ensures that only one thread can access a shared resource or critical section at a time, preventing data corruption and inconsistencies.
+
+`This is usually achieved by following the below steps:`
+1. New thread comes and acquires a lock on the shared object/class. The thread performs the required operation while the other incoming threads patiently wait for their turn.\
+2. The thread releases the acquired lock.\
+3. Same steps start from step 1 for other threads.
 
 `Example 1`
 ```java
