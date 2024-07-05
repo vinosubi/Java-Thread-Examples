@@ -334,4 +334,5 @@ public class SynchronizationExample2 {
     }
 }
 ```
+`We have already learned how to synchronize a shared resource using a **synchronized** keyword. Now in this diccussion, we’ll see a better way to synchronize shared resources using **ReentrantLock**.`
 
