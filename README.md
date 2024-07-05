@@ -67,7 +67,7 @@ public class Example2 {
 }
 ```
 
-**Thread Synchronization**
+**Thread Synchronization**\
 When multiple threads access shared resources, synchronization is essential to prevent data inconsistencies. The synchronized keyword ensures that only one thread can execute a synchronized block or method at a time.
 
 **Synchronization** in Java ensures that only one thread can access a shared resource or critical section at a time, preventing data corruption and inconsistencies.
