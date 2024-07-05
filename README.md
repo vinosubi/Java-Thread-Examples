@@ -135,7 +135,7 @@ In this example, we have a class named Counter that maintains an internal count 
 3. If the lock is available, the thread acquires the lock, enters the monitor, and executes the critical section of the increment method, which increments the count variable by 1.
 4. While a thread is inside the synchronized increment method, other threads that try to call either the increment, decrement, or getCount methods on the same Counter instance are blocked, as they need to acquire the lock associated with the monitor.
 5. Once the thread finishes executing the critical section (i.e., incrementing the count), it releases the lock, allowing other waiting threads to acquire the lock and execute their synchronized methods.
-6. Similarly, when threads call the synchronized decrement or getCount methods, they follow the same steps of acquiring and releasing the lock associated with the monitor, ensuring that only one thread executes the critical section at a time.\
+6. Similarly, when threads call the synchronized decrement or getCount methods, they follow the same steps of acquiring and releasing the lock associated with the monitor, ensuring that only one thread executes the critical section at a time.
 
    
 `Example 1`
