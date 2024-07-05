@@ -73,8 +73,8 @@ When multiple threads access shared resources, synchronization is essential to p
 **Synchronization** in Java ensures that only one thread can access a shared resource or critical section at a time, preventing data corruption and inconsistencies.
 
 `This is usually achieved by following the below steps:`
-1. New thread comes and acquires a lock on the shared object/class. The thread performs the required operation while the other incoming threads patiently wait for their turn.\
-2. The thread releases the acquired lock.\
+1. New thread comes and acquires a lock on the shared object/class. The thread performs the required operation while the other incoming threads patiently wait for their turn.
+2. The thread releases the acquired lock.
 3. Same steps start from step 1 for other threads.
 
 `Example 1`
