@@ -348,3 +348,74 @@ We have already learned how to synchronize a shared resource using a **synchroni
 1. The ReentrantLock class is a part of the Java Concurrency framework introduced in Java 5. It provides a flexible and powerful alternative to the traditional synchronized keyword for managing access to critical sections in a multithreaded environment. 
 2. The term "Reentrant" in its name refers to its ability to allow a thread to re-acquire the lock it is holding, making it suitable for nested locking scenarios.
 
+`Key Features:`
+**1. Reentrancy:** A thread that already holds the lock can acquire it again without blocking.
+**2. Interruptible Locking:** The lock acquisition can be interruptible using the lockInterruptibly() method.
+**3. Fairness:** It supports both fair and unfair lock acquisition policies.
+**4. Condition Support:** It provides support for creating associated Condition objects for advanced thread signaling.
+
+**Here’s a basic overview of how to use ReentrantLock:**
+`1. Import the ReentrantLock class:`
+```java
+import java.util.concurrent.locks.ReentrantLock;
+```
+
+`2. Create an instance of ReentrantLock:`
+```java
+ReentrantLock lock = new ReentrantLock();
+```
+
+`3. Use the lock and unlock methods to control access to the critical section:`
+```java
+try {
+    lock.lock(); // Acquire the lock
+
+    // Critical section - the code that needs to be synchronized
+    // ...
+
+} finally {
+    lock.unlock(); // Release the lock in a finally block to ensure it's always released
+}
+```
+
+The lock method is used to acquire the lock, and the unlock method is used to release it. It's important to release the lock in a finally block to ensure that it's released even if an exception occurs within the critical section.
+
+`4. tryLock():`
+You can also use the tryLock method, which attempts to acquire the lock without blocking. This method returns a boolean indicating whether the lock was acquired:
+```java
+if (lock.tryLock()) {
+    try {
+        // Critical section
+        // ...
+    } finally {
+        lock.unlock();
+    }
+} else {
+    // Handle the case where the lock couldn't be acquired immediately
+    // ...
+}
+```
+
+`5. tryLock(long timeout, TimeUnit unit)`
+The tryLock(long timeout, TimeUnit unit) method in the ReentrantLock class provides a way to attempt to acquire the lock within a specified time duration. It is a variation of the tryLock() method that introduces a timeout parameter, allowing the thread to wait for a certain period for the lock to become available. If the lock is not acquired within the specified time, the method returns false.
+
+`6. Reentrant behavior:`
+As mentioned earlier, ReentrantLock is reentrant, meaning a thread can acquire the lock multiple times. To release the lock, the thread must call unlock the same number of times it called lock.
+```java
+lock.lock();   // First acquisition
+try {
+    // Critical section
+    // ...
+    lock.lock();   // Second acquisition by the same thread
+    try {
+        // Nested critical section
+        // ...
+    } finally {
+        lock.unlock(); // Release the lock for the second acquisition
+    }
+} finally {
+    lock.unlock(); // Release the lock for the first acquisition
+}
+```
+
+
