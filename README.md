@@ -336,8 +336,15 @@ public class SynchronizationExample2 {
 ```
 We have already learned how to synchronize a shared resource using a **synchronized** keyword. Now in this diccussion, we’ll see a better way to synchronize shared resources using **ReentrantLock**
 
-1. The ReentrantLock class implements the Lock interface. This class is provided in java. util.concurrent package and was introduced in Java 1.5.
+1. The **ReentrantLock** class implements the Lock interface. This class is provided in java. util.concurrent package and was introduced in Java 1.5.
 2. We have to create an object of the ReentrantLock class and the shared resource must be surrounded by lock and unlock methods on this object.
 3. The thread that wants to execute the shared resource must take this lock and hence all the other threads trying to take a lock on this object must wait till the current thread releases it.
 4. Now the beauty of ReentrantLock is, it allows the current thread to take the lock on the same lock object multiple times. Note that when the current thread first calls the lock() method, a hold count is set to one. This thread can call the lock() method again and every time hold count is incremented by one.
 5. For every unlock request, the hold count is decremented by one and when the hold count is 0, the resource is unlocked.
+   
+![image](https://github.com/vinosubi/Java-Thread-Examples/assets/133937082/44e4050b-bbf3-45d7-b444-b0856bbf1669)
+
+**Overview of ReentrantLock:**
+1. The ReentrantLock class is a part of the Java Concurrency framework introduced in Java 5. It provides a flexible and powerful alternative to the traditional synchronized keyword for managing access to critical sections in a multithreaded environment. 
+2. The term "Reentrant" in its name refers to its ability to allow a thread to re-acquire the lock it is holding, making it suitable for nested locking scenarios.
+
