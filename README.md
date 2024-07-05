@@ -334,8 +334,4 @@ public class SynchronizationExample2 {
     }
 }
 ```
-
-</pre>
-<b><p style='line-height: 40px;'>We have already learned how to synchronize a shared resource using a synchronized keyword. Now in this diccussion, we’ll see a better way to synchronize shared resources using ReentrantLock</b>
-</pre>
-
+We have already learned how to synchronize a shared resource using a **synchronized** keyword. Now in this diccussion, we’ll see a better way to synchronize shared resources using **ReentrantLock**
