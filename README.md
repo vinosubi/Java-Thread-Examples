@@ -494,70 +494,66 @@ Thread 2 is leaving the critical section.
 ```
 
 `Example 2:`
-**Let’s dive into a simple example to illustrate the basic of ReentrantLock:**
-```java
-import java.util.concurrent.locks.ReentrantLock;
+In the below example, two threads (Thread 1 and Thread 2) attempt to acquire the lock using tryLock(). If the lock is available, the thread enters the critical section. If not, it prints a message indicating that the lock couldn't be acquired.
 
-public class Example1 {
+This approach is useful when you want to provide alternative logic or take specific actions when the lock is not available, rather than having the thread block until it can acquire the lock. It allows for more flexibility in handling scenarios where immediate lock acquisition is not critical.
+```java
+package com.vino.info.example.synchronization;
+import java.util.concurrent.locks.ReentrantLock;
+public class SynchronizationExample4 {
 
     private static final ReentrantLock lock = new ReentrantLock();
 
+    private static int counter = 0;
+
     public static void main(String[] args) {
+        Thread thread1 = new Thread(() -> {
+            if (lock.tryLock()) {
+                try {
+                    System.out.println("Thread 1 acquired the lock");
+                    counter++;
+                    System.out.println("Thread 1 incremented counter to " + counter);
+                } finally {
+                    lock.unlock();
+                    System.out.println("Thread 1 released the lock");
+                }
+            } else {
+                System.out.println("Thread 1 couldn't acquire the lock");
+            }
+        });
 
-        // Create multiple threads to demonstrate locking
-        Thread thread1 = new Thread(() -> performTask("Thread 1"));
-
-        Thread thread2 = new Thread(() -> performTask("Thread 2"));
+        Thread thread2 = new Thread(() -> {
+            if (lock.tryLock()) {
+                try {
+                    System.out.println("Thread 2 acquired the lock");
+                    counter++;
+                    System.out.println("Thread 2 incremented counter to " + counter);
+                } finally {
+                    lock.unlock();
+                    System.out.println("Thread 2 released the lock");
+                }
+            } else {
+                System.out.println("Thread 2 couldn't acquire the lock");
+            }
+        });
 
         // Start the threads
         thread1.start();
         thread2.start();
     }
 
-    private static void performTask(String threadName) {
-        // Acquire the lock
-        lock.lock();
-
-        try {
-            System.out.println(threadName + " is in the critical section.");
-
-            // Simulate some work in the critical section
-            for (int i = 0; i < 5; i++) {
-                System.out.println(threadName + ": " + i);
-                try {
-                    Thread.sleep(100); // Simulate some processing time
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-
-        } finally {
-            // Release the lock in a finally block to ensure it's released even if an exception occurs
-            System.out.println(threadName + " is leaving the critical section.");
-            lock.unlock();
-        }
-    }
 }
+
 ```
 In this example, two threads (Thread 1 and Thread 2) attempt to execute the performTask method. The ReentrantLock ensures that only one thread at a time can enter the critical section, demonstrating effective synchronization.
 
 OUTPUT
 
 ```java
-Thread 1 is in the critical section.
-Thread 1: 0
-Thread 1: 1
-Thread 1: 2
-Thread 1: 3
-Thread 1: 4
-Thread 1 is leaving the critical section.
-Thread 2 is in the critical section.
-Thread 2: 0
-Thread 2: 1
-Thread 2: 2
-Thread 2: 3
-Thread 2: 4
-Thread 2 is leaving the critical section.
+Thread 1 acquired the lock
+Thread 2 couldn't acquire the lock
+Thread 1 incremented counter to 1
+Thread 1 released the lock
 ```
 
 
