@@ -53,6 +53,20 @@ ExecutorService is an interface provided by JDK. Its object can be obtained usin
 ```
 Creates a work-stealing thread pool using all available processors as its target parallelism level
 
+Once the thread pool is created, we can perform the required action on them. Most used methods and their functionalities are as below:
+
+- **execute(Runnable) :** Executes the given command at some time in the future. It does not return anything.
+- **submit(Runnable) :** executes the passed task and returns a Future Object representing the executed task.
+- **invokeAll(Collection<? extends Callable<T>> tasks):** Executes the given tasks, returning a list of Futures holding their status and results when all complete.
+- **invokeAny(Collection<? extends Callable<T>> tasks):** Executes the given tasks, returning the result of one that has completed successfully (i.e., without throwing an exception), if any do.
+- **awaitTermination(long timeout, TimeUnit unit):** Blocks until all tasks have completed execution after a shutdown request, or the timeout - occurs, or the current thread is interrupted, whichever happens first.
+- **isShutdown():** Returns true if this executor has been shut down.
+-** isTerminated():** Returns true if all tasks have been completed following shut down.
+-** shutdown() :** Initiates the shutdown so that previously submitted tasks are executed, but no new task will be accepted. Invocation has no additional effect if already shut down.
+- **shutdownNow() :** Attempts to stop all actively executing tasks, halts the processing of waiting tasks, and returns a list of the tasks that were awaiting execution.
+
+
+
 
 
 
