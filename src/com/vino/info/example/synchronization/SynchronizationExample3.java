@@ -1,7 +1,7 @@
 package com.vino.info.example.synchronization;
 
 import java.util.concurrent.locks.ReentrantLock;
-
+//basic of ReentrantLock:
 public class SynchronizationExample3 {
     private static final ReentrantLock lock = new ReentrantLock();
 
