@@ -623,13 +623,37 @@ public class EmployeeExample {
 }
 ```
 
-In this example:
+### OUTPUT
 
-Two employees, Alice and Bob, are represented by separate threads.\
-Each employee attempts to acquire a lock to modify a shared report.\
-If an employee cannot acquire the lock within 100 milliseconds, they print a message indicating they will try again later, allowing the thread to continue running without blocking.\
-If an employee acquires the lock, they modify the report and release the lock after they are done.\
-This approach ensures that the threads do not block indefinitely while waiting to acquire the lock and can remain responsive, potentially performing other tasks if the lock is not available.\
+```java
+Alice acquired the lock
+Alice modified the report to: Alice updated the report
+Bob acquired the lock
+Alice released the lock
+Bob modified the report to: Bob updated the report
+Bob released the lock
+```
+
+
+### In this example:
+
+- Two employees, Alice and Bob, are represented by separate threads.
+- Each employee attempts to acquire a lock to modify a shared report.
+- If an employee cannot acquire the lock within 100 milliseconds, they print a message indicating they will try again later, allowing the thread to continue running without blocking.
+- If an employee acquires the lock, they modify the report and release the lock after they are done.
+- This approach ensures that the threads do not block indefinitely while waiting to acquire the lock and can remain responsive, potentially performing other tasks if the lock is not available.
+
+- The run() method attempts to acquire the lock using lock.tryLock(100, TimeUnit.MILLISECONDS), which means it will try to acquire the lock and wait up to 100 milliseconds before giving up.
+
+ ### Execution Flow
+ 
+- Both threads (thread1 for Alice and thread2 for Bob) start almost simultaneously and attempt to acquire the lock.
+- If Alice acquires the lock first, she modifies the report, releases the lock, and Bob will subsequently acquire the lock if he retries within the specified time.
+- If neither can acquire the lock within the given 100 milliseconds, they will print a message indicating they couldn't acquire the lock and may take other actions or retry later.
+
+
+
+
 
 
 
