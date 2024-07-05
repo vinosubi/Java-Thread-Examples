@@ -7,7 +7,7 @@ Concurrency is the ability of a system to manage multiple tasks simultaneously. 
 
 ![image](https://github.com/vinosubi/Java-Thread-Examples/assets/133937082/ac0dcb21-41f1-446c-8282-5298770a66b8)
 
-An ExecutorService is a utility in Java that provides a way to execute tasks concurrently.
+An **ExecutorService** is a utility in Java that provides a way to execute tasks concurrently.
 It manages a pool of worker threads, and allows you to submit tasks for execution.
 The ExecutorService handles creation, management, and reusability of threads, making it easier to handle concurrent tasks in multithreaded applications.
 
