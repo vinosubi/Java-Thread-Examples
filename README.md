@@ -335,14 +335,7 @@ public class SynchronizationExample2 {
 }
 ```
 
-<p style="line-height: 2;">
-  This is a paragraph with a line height of 2.
-  The lines are more spaced out compared to the default line height.
-</p>
-<p style="line-height: 4;">We have already learned how to synchronize a shared resource using a synchronized keyword. Now in this diccussion, we’ll see a better way to synchronize shared resources using ReentrantLock</p>
-
 </pre>
-
-<b><p style=' line-height: 40px;'>We have already learned how to synchronize a shared resource using a synchronized keyword. Now in this diccussion, we’ll see a better way to synchronize shared resources using ReentrantLock</b>
+<b><p style='line-height: 40px;'>We have already learned how to synchronize a shared resource using a synchronized keyword. Now in this diccussion, we’ll see a better way to synchronize shared resources using ReentrantLock</b>
 </pre>
 
