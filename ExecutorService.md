@@ -141,6 +141,7 @@ public class MyRunnableTask implements Runnable {
 }
 
 ```
+The output will demonstrate how the tasks are run concurrently by the thread pool. You will see that up to 3 tasks are running at the same time since the pool size is 3.
 
 ### OUTPUT
 
@@ -156,6 +157,7 @@ Task 3 is completed in: pool-1-thread-3
 Task 4 is completed in: pool-1-thread-1
 Task 5 is completed in: pool-1-thread-2
 ```
+In this output, you can observe how tasks 1, 2, and 3 start simultaneously, followed by tasks 4 and 5 after the first three are completed. This demonstrates the concurrent execution managed by the ExecutorService.
 
 
 
