@@ -98,7 +98,7 @@ class MyRunnableTask implements Runnable {
 }
 
 ```
-### Example 2 : This Example that includes creating multiple Runnable tasks, submitting them to an ExecutorService, and demonstrating how the tasks are executed concurrently
+### Example 2 : This Example that includes creating multiple Runnable tasks, submitting them to an ExecutorService, and demonstrating how the tasks are executed concurrently.
 
 ```java
 import java.util.concurrent.ExecutorService;
