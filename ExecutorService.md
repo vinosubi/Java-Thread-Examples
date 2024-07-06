@@ -142,6 +142,21 @@ public class MyRunnableTask implements Runnable {
 
 ```
 
+### OUTPUT
+
+```java
+Task 1 is running in: pool-1-thread-1
+Task 2 is running in: pool-1-thread-2
+Task 3 is running in: pool-1-thread-3
+Task 1 is completed in: pool-1-thread-1
+Task 4 is running in: pool-1-thread-1
+Task 2 is completed in: pool-1-thread-2
+Task 5 is running in: pool-1-thread-2
+Task 3 is completed in: pool-1-thread-3
+Task 4 is completed in: pool-1-thread-1
+Task 5 is completed in: pool-1-thread-2
+```
+
 
 
 
