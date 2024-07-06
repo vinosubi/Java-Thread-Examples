@@ -56,7 +56,8 @@ Creates a work-stealing thread pool using all available processors as its target
 Once the thread pool is created, we can perform the required action on them. Most used methods and their functionalities are as below:
 
 - **execute(Runnable) :** Executes the given command at some time in the future. It does not return anything.
-- **submit(Runnable) :** executes the passed task and returns a Future Object representing the executed task.
+- **submit(Runnable) :** executes the passed task and returns a Future Object representing the executed task.This method accepts a Runnable task for execution and returns a Future object representing that task. Since a Runnable does not return a result, the returned Future's get method will return null upon successful completion.
+- **submit(Callable) :** The Callable interface is similar to Runnable, but it can return a result and throw a checked exception. It is a generic interface with a single method call that returns a result of type V..
 - **invokeAll(Collection<? extends Callable<T>> tasks):** Executes the given tasks, returning a list of Futures holding their status and results when all complete.
 - **invokeAny(Collection<? extends Callable<T>> tasks):** Executes the given tasks, returning the result of one that has completed successfully (i.e., without throwing an exception), if any do.
 - **awaitTermination(long timeout, TimeUnit unit):** Blocks until all tasks have completed execution after a shutdown request, or the timeout - occurs, or the current thread is interrupted, whichever happens first.
