@@ -74,7 +74,7 @@ package com.vino.info.example.executorService;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-public class Example1 {
+public class Example1ExecuteMethod {
     public static void main(String[] args) {
         // Create an ExecutorService with a fixed thread pool of size 2
         ExecutorService executorService = Executors.newFixedThreadPool(2);
@@ -104,7 +104,7 @@ class MyRunnableTask implements Runnable {
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class ExecutorServiceExample {
+public class Example2ExecuteMethod {
     public static void main(String[] args) {
         // Create an ExecutorService with a fixed thread pool of size 3
         ExecutorService executorService = Executors.newFixedThreadPool(3);
