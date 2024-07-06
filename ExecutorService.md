@@ -98,6 +98,49 @@ class MyRunnableTask implements Runnable {
 }
 
 ```
+### Example 2 : This Example that includes creating multiple Runnable tasks, submitting them to an ExecutorService, and demonstrating how the tasks are executed concurrently
+
+```java
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class ExecutorServiceExample {
+    public static void main(String[] args) {
+        // Create an ExecutorService with a fixed thread pool of size 3
+        ExecutorService executorService = Executors.newFixedThreadPool(3);
+
+        // Submit multiple tasks to the executor
+        for (int i = 1; i <= 5; i++) {
+            executorService.execute(new MyRunnableTask(i));
+        }
+
+        // Properly shut down the executor
+        executorService.shutdown();
+    }
+}
+
+public class MyRunnableTask implements Runnable {
+    private final int taskId;
+
+    public MyRunnableTask(int taskId) {
+        this.taskId = taskId;
+    }
+
+    @Override
+    public void run() {
+        System.out.println("Task " + taskId + " is running in: " + Thread.currentThread().getName());
+        try {
+            // Simulate some work with a sleep
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            System.err.println("Task " + taskId + " was interrupted.");
+        }
+        System.out.println("Task " + taskId + " is completed in: " + Thread.currentThread().getName());
+    }
+}
+
+```
 
 
 
