@@ -66,6 +66,37 @@ Once the thread pool is created, we can perform the required action on them. Mos
 -** shutdown() :** Initiates the shutdown so that previously submitted tasks are executed, but no new task will be accepted. Invocation has no additional effect if already shut down.
 - **shutdownNow() :** Attempts to stop all actively executing tasks, halts the processing of waiting tasks, and returns a list of the tasks that were awaiting execution.
 
+### Example 1: Using ExecutorService to Execute a Runnable
+
+```java
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class ExecutorServiceExample {
+    public static void main(String[] args) {
+        // Create an ExecutorService with a fixed thread pool of size 2
+        ExecutorService executorService = Executors.newFixedThreadPool(2);
+
+        // Create an instance of the Runnable task
+        MyRunnableTask task = new MyRunnableTask();
+
+        // Submit the task to the executor for execution
+        executorService.execute(task);
+
+        // Properly shut down the executor
+        executorService.shutdown();
+    }
+}
+
+public class MyRunnableTask implements Runnable {
+    @Override
+    public void run() {
+        System.out.println("Task is running in: " + Thread.currentThread().getName());
+    }
+}
+```
+
 
 
 
