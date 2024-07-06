@@ -70,10 +70,11 @@ Once the thread pool is created, we can perform the required action on them. Mos
 
 ```java
 
+package com.vino.info.example.executorService;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
-public class ExecutorServiceExample {
+public class Example1 {
     public static void main(String[] args) {
         // Create an ExecutorService with a fixed thread pool of size 2
         ExecutorService executorService = Executors.newFixedThreadPool(2);
@@ -89,12 +90,13 @@ public class ExecutorServiceExample {
     }
 }
 
-public class MyRunnableTask implements Runnable {
+class MyRunnableTask implements Runnable {
     @Override
     public void run() {
         System.out.println("Task is running in: " + Thread.currentThread().getName());
     }
 }
+
 ```
 
 
