@@ -202,6 +202,62 @@ Task is running on thread: pool-1-thread-1
 Task completed on thread: pool-1-thread-1
 ```
 
+### Example 4 :  ExecutorService to submit a Runnable mutiple task in Java.[submit(Runnable)]
+
+```java
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class ExecutorServiceExample {
+
+    public static void main(String[] args) {
+        // Create a thread pool with a fixed number of threads
+        ExecutorService executorService = Executors.newFixedThreadPool(5);
+
+        // Create and submit multiple Runnable tasks
+        for (int i = 1; i <= 10; i++) {
+            int taskId = i;
+            Runnable task = new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        // Simulate some work with Thread.sleep
+                        System.out.println("Task " + taskId + " is running on thread: " + Thread.currentThread().getName());
+                        Thread.sleep(2000);  // Sleep for 2 seconds
+                        System.out.println("Task " + taskId + " completed on thread: " + Thread.currentThread().getName());
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            };
+            executorService.submit(task);
+        }
+
+        // Shutdown the ExecutorService
+        executorService.shutdown();
+    }
+}
+
+```
+# OUTPUT
+```java
+Task 1 is running on thread: pool-1-thread-1
+Task 2 is running on thread: pool-1-thread-2
+Task 3 is running on thread: pool-1-thread-3
+Task 4 is running on thread: pool-1-thread-4
+Task 5 is running on thread: pool-1-thread-5
+Task 1 completed on thread: pool-1-thread-1
+Task 6 is running on thread: pool-1-thread-1
+Task 2 completed on thread: pool-1-thread-2
+Task 7 is running on thread: pool-1-thread-2
+Task 3 completed on thread: pool-1-thread-3
+Task 8 is running on thread: pool-1-thread-3
+Task 4 completed on thread: pool-1-thread-4
+Task 9 is running on thread: pool-1-thread-4
+Task 5 completed on thread: pool-1-thread-5
+Task 10 is running on thread: pool-1-thread-5
+...
+```
 
 
 
