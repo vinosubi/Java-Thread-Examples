@@ -159,6 +159,49 @@ Task 5 is completed in: pool-1-thread-2
 ```
 In this output, you can observe how tasks 1, 2, and 3 start simultaneously, followed by tasks 4 and 5 after the first three are completed. This demonstrates the concurrent execution managed by the ExecutorService.
 
+### Example 3 :  ExecutorService to submit a Runnable task in Java.[submit(Runnable)]
+
+```java
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class ExecutorServiceExample {
+
+    public static void main(String[] args) {
+        // Create a thread pool with a fixed number of threads
+        ExecutorService executorService = Executors.newFixedThreadPool(5);
+
+        // Create a Runnable task
+        Runnable task = new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    // Simulate some work with Thread.sleep
+                    System.out.println("Task is running on thread: " + Thread.currentThread().getName());
+                    Thread.sleep(2000);  // Sleep for 2 seconds
+                    System.out.println("Task completed on thread: " + Thread.currentThread().getName());
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        // Submit the Runnable task to the ExecutorService
+        executorService.submit(task);
+
+        // Shutdown the ExecutorService
+        executorService.shutdown();
+    }
+}
+
+```
+### Output:
+
+```java
+Task is running on thread: pool-1-thread-1
+Task completed on thread: pool-1-thread-1
+```
+
 
 
 
