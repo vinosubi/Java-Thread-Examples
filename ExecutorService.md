@@ -239,7 +239,7 @@ public class ExecutorServiceExample {
 }
 
 ```
-# OUTPUT
+### OUTPUT
 ```java
 Task 1 is running on thread: pool-1-thread-1
 Task 2 is running on thread: pool-1-thread-2
@@ -258,6 +258,68 @@ Task 5 completed on thread: pool-1-thread-5
 Task 10 is running on thread: pool-1-thread-5
 ...
 ```
+
+### Example 5 :  An Example where we have multiple student tasks that represent students doing some work. Each student task will print its name, simulate doing homework by sleeping for a random amount of time, and then print a completion message.[submit(Runnable)]
+
+```java
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadLocalRandom;
+
+public class StudentExample {
+
+    public static void main(String[] args) {
+        // Create a thread pool with a fixed number of threads
+        ExecutorService executorService = Executors.newFixedThreadPool(5);
+
+        // Create and submit multiple student tasks
+        String[] studentNames = {"Alice", "Bob", "Charlie", "Diana", "Eve", "Frank", "Grace", "Hannah", "Ivan", "Jack"};
+
+        for (String studentName : studentNames) {
+            Runnable studentTask = new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        // Simulate doing homework with Thread.sleep
+                        System.out.println(studentName + " is doing homework on thread: " + Thread.currentThread().getName());
+                        int sleepTime = ThreadLocalRandom.current().nextInt(1000, 3000);  // Sleep for a random time between 1 and 3 seconds
+                        Thread.sleep(sleepTime);
+                        System.out.println(studentName + " completed homework on thread: " + Thread.currentThread().getName() + " (slept for " + sleepTime + " ms)");
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            };
+            executorService.submit(studentTask);
+        }
+
+        // Shutdown the ExecutorService
+        executorService.shutdown();
+    }
+}
+
+```
+### OUTPUT
+
+```java
+Alice is doing homework on thread: pool-1-thread-1
+Bob is doing homework on thread: pool-1-thread-2
+Charlie is doing homework on thread: pool-1-thread-3
+Diana is doing homework on thread: pool-1-thread-4
+Eve is doing homework on thread: pool-1-thread-5
+Alice completed homework on thread: pool-1-thread-1 (slept for 1723 ms)
+Bob completed homework on thread: pool-1-thread-2 (slept for 2556 ms)
+Charlie completed homework on thread: pool-1-thread-3 (slept for 1345 ms)
+Frank is doing homework on thread: pool-1-thread-1
+Diana completed homework on thread: pool-1-thread-4 (slept for 1984 ms)
+Grace is doing homework on thread: pool-1-thread-2
+Eve completed homework on thread: pool-1-thread-5 (slept for 2678 ms)
+Hannah is doing homework on thread: pool-1-thread-3
+...
+
+```
+
+
 
 
 
