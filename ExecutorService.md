@@ -319,6 +319,120 @@ Hannah is doing homework on thread: pool-1-thread-3
 
 ```
 
+### Example 6 :  An Example demonstrating how to use ExecutorService to submit a Callable task in Java. The Callable interface is similar to Runnable, but it can return a result and throw a checked exception.[submit(Callable)]
+
+```java
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
+public class ExecutorServiceExample {
+    public static void main(String[] args) {
+        // Create an ExecutorService with a fixed thread pool
+        ExecutorService executorService = Executors.newFixedThreadPool(2);
+        
+        // Create a Callable task
+        Callable<String> callableTask = new Callable<String>() {
+            @Override
+            public String call() throws Exception {
+                // Simulate some long-running task
+                Thread.sleep(2000);
+                return "Task's execution";
+            }
+        };
+        
+        // Submit the Callable task to the executor service
+        Future<String> future = executorService.submit(callableTask);
+        
+        try {
+            // Get the result of the computation
+            String result = future.get(); // This will block until the task is done
+            System.out.println("Result from the Callable task: " + result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // Shut down the executor service
+            executorService.shutdown();
+        }
+    }
+}
+
+
+```
+### OUTPUT
+
+```java
+Result from the Callable task: Task's execution
+```
+
+### Example 6 :  Here's an example demonstrating how to use ExecutorService to submit multiple Callable tasks and handle their results..[submit(Callable)]
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
+public class MultipleTasksExample {
+    public static void main(String[] args) {
+        // Create an ExecutorService with a fixed thread pool
+        ExecutorService executorService = Executors.newFixedThreadPool(3);
+        
+        // Create a list to hold the Future objects associated with Callable tasks
+        List<Future<String>> futures = new ArrayList<>();
+        
+        // Create multiple Callable tasks and submit them to the executor service
+        for (int i = 0; i < 5; i++) {
+            Callable<String> callableTask = new Task(i);
+            Future<String> future = executorService.submit(callableTask);
+            futures.add(future);
+        }
+        
+        // Retrieve and print the results of the tasks
+        for (Future<String> future : futures) {
+            try {
+                String result = future.get(); // This will block until the task is done
+                System.out.println("Result from the Callable task: " + result);
+            } catch (InterruptedException | ExecutionException e) {
+                e.printStackTrace();
+            }
+        }
+        
+        // Shut down the executor service
+        executorService.shutdown();
+    }
+}
+
+class Task implements Callable<String> {
+    private int id;
+
+    public Task(int id) {
+        this.id = id;
+    }
+
+    @Override
+    public String call() throws Exception {
+        // Simulate some long-running task
+        Thread.sleep(1000);
+        return "Task " + id + " execution";
+    }
+}
+
+```
+### OUTPUT
+
+```java
+Result from the Callable task: Task 0 execution
+Result from the Callable task: Task 1 execution
+Result from the Callable task: Task 2 execution
+Result from the Callable task: Task 3 execution
+Result from the Callable task: Task 4 execution
+```
+
 
 
 
